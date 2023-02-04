@@ -4,40 +4,38 @@ import (
 	"mygofarm/Infrastructures/Rom"
 	"mygofarm/Models/User"
 )
-type UserParams struct {
-	UserID   int64  `db:"user_id"`
-	Username string `db:"user_name"`
-	Password string `db:"password"`
+
+type UserModel struct {
+	User.User
 }
 
-
-func GetUserFindAll() ([]User.User,error){
-	var users []User.User
-	Rom.Db.Find(&users)
-	return users,nil
+func (userModel *UserModel) UserGetOUser() (User.User, error) {
+	var userResult User.User
+	Rom.Db.Find(&userResult, userModel.Id)
+	return userResult, nil
 }
 
-func AddUser(user *User.User) (int64, error){
-	result := Rom.Db.Omit("userid","username","gender").Create(user)
-	if result.RowsAffected !=1 {
-		return 0,result.Error
+func (userModel *UserModel) UserSignUser() (int64, error) {
+	result := Rom.Db.Omit("userid", "username", "password", "email", "gender").Create(userModel)
+	if result.RowsAffected != 1 {
+		return 0, result.Error
 	}
-	return result.RowsAffected,nil
+	return result.RowsAffected, nil
 }
 
-func UpUser(user *User.User) (int64, error)  {
-	result :=Rom.Db.Model(user).Update("username")
+func (userModel *UserModel) UserSignUpUser() (int64, error) {
+	result := Rom.Db.Model(userModel).Update("username", "gender")
 	//result := db.Model(User{}).Where("role = ?", "admin").Updates(User{Name: "hello", Age: 18})
-	if result.RowsAffected !=1 {
-		return 0,result.Error
+	if result.RowsAffected != 1 {
+		return 0, result.Error
 	}
-	return result.RowsAffected,nil
+	return result.RowsAffected, nil
 }
 
-func DelUser(user *User.User) (int64, error) {
-	result :=Rom.Db.Where("id",user.Id).Delete(user)
-	if result.RowsAffected !=1 {
-		return 0,result.Error
+func (userModel *UserModel) UserSignDelUser() (int64, error) {
+	result := Rom.Db.Where("id", userModel.Id).Delete(userModel)
+	if result.RowsAffected != 1 {
+		return 0, result.Error
 	}
-	return result.RowsAffected,nil
+	return result.RowsAffected, nil
 }
