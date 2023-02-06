@@ -9,7 +9,7 @@ type UserModel struct {
 	User.User
 }
 
-func (userModel *UserModel) UserGetOUser() (User.User, error) {
+func (userModel *UserModel) UserGetOneUser() (User.User, error) {
 	var userResult User.User
 	Rom.Db.Find(&userResult, userModel.Id)
 	return userResult, nil
