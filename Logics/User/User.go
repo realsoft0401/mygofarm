@@ -16,7 +16,7 @@ func (userModel *UserModel) UserGetOneUser() (User.User, error) {
 }
 
 func (userModel *UserModel) UserSignUser() (int64, error) {
-	result := Rom.Db.Omit("userid", "username", "password", "email", "gender").Create(userModel)
+	result := Rom.Db.Select("userid", "username", "password", "email", "gender").Create(userModel)
 	if result.RowsAffected != 1 {
 		return 0, result.Error
 	}

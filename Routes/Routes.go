@@ -23,7 +23,7 @@ func Setup() *gin.Engine {
 	r.GET("/version", func(c *gin.Context) {
 		c.String(http.StatusOK, fmt.Sprintf("系统版本信息:%s\n", Settings.Conf.Version))
 	})
-	r.POST("/signup", User.SignUpHandler)
+	r.POST("/signup", User.SignHandler)
 
 	//r.GET("/ping", Middlewares.JWTAuthMiddleware(), func(c *gin.Context) {
 	//

@@ -10,7 +10,7 @@ import (
 	"go.uber.org/zap"
 )
 
-func SignUpHandler(c *gin.Context) {
+func SignHandler(c *gin.Context) {
 	p := new(User.User)
 	if err := c.ShouldBindJSON(&p); err != nil {
 		//请求参数有误
