@@ -2,7 +2,7 @@ package User
 
 type User struct {
 	Id         int64  `gorm:"column:id;unique"`
-	Userid     string `gorm:"column:userid"`
+	Userid     int64  `gorm:"column:userid"`
 	Password   string `gorm:"column:password"`
 	UserName   string `gorm:"column:username"`
 	Email      string `gorm:"column:email"`

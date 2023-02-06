@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"mygofarm/Middlewares"
 	"mygofarm/Pkg/Logger"
-	"mygofarm/Services/Public"
 	"mygofarm/Services/User"
 	"mygofarm/Settings"
 
@@ -27,7 +26,7 @@ func Setup() *gin.Engine {
 	})
 	r.POST("/signadd", User.SignHandler)
 	r.POST("/signadd", User.SignHandler)
-	r.POST("/signdel", Middlewares.JWTAuthMiddleware(),Public.JWTAuthCheck(),User.SignDelHandler)
-
+	r.POST("/signdel", Middlewares.JWTAuthMiddleware(), User.SignDelHandler)
+	r.POST("/signup", Middlewares.JWTAuthMiddleware(), User.SignUpHandler)
 	return r
 }
