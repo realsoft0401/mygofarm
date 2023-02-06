@@ -24,7 +24,7 @@ func (userModel *UserModel) UserSignUser() (int64, error) {
 }
 
 func (userModel *UserModel) UserSignUpUser() (int64, error) {
-	result := Rom.Db.Model(userModel).Update("username", "gender")
+	result := Rom.Db.Model(userModel).Updates(map[string]interface{}{"username": userModel.UserName, "email": userModel.Email, "gender": userModel.Gender})
 	//result := db.Model(User{}).Where("role = ?", "admin").Updates(User{Name: "hello", Age: 18})
 	if result.RowsAffected != 1 {
 		return 0, result.Error
