@@ -13,6 +13,7 @@ const (
 	CodeInvalidAuthFormat ResCode = 1007
 	CodeNotLogin          ResCode = 1008
 	CodeFormatError       ResCode = 1009
+	SnowFlakeError       ResCode = 1010
 )
 
 var codeMsgMap = map[ResCode]string{
@@ -26,6 +27,7 @@ var codeMsgMap = map[ResCode]string{
 	CodeInvalidAuthFormat: "认证格式有误",
 	CodeNotLogin:          "未登录",
 	CodeFormatError:       "请求参数格式错误",
+	SnowFlakeError:       "雪花算法生成错误",
 }
 
 func (c ResCode) Msg() string {

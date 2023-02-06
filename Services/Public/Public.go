@@ -1,6 +1,8 @@
 package Public
 
 import (
+	"crypto/md5"
+	"encoding/hex"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )
@@ -26,4 +28,10 @@ func JWTAuthCheck() func(c *gin.Context){
 			})
 		}
 	}
+}
+
+func EncryptPassword(Password string) string {
+	h := md5.New()
+	h.Write([]byte("logan.com"))
+	return hex.EncodeToString(h.Sum([]byte(Password)))
 }

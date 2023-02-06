@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"mygofarm/Middlewares"
 	"mygofarm/Pkg/Logger"
-	"mygofarm/Services/Public"
 	"mygofarm/Services/User"
 	"mygofarm/Settings"
 
@@ -26,8 +25,8 @@ func Setup() *gin.Engine {
 		c.String(http.StatusOK, fmt.Sprintf("系统版本信息:%s\n", Settings.Conf.Version))
 	})
 	r.POST("/signadd", User.SignHandler)
-	r.POST("/signadd", User.SignHandler)
-	r.POST("/signdel", Middlewares.JWTAuthMiddleware(),Public.JWTAuthCheck(),User.SignDelHandler)
+	r.POST("/login", User.LoginHandler)
+	r.POST("/signdel", Middlewares.JWTAuthMiddleware(),User.SignDelHandler)
 
 	return r
 }

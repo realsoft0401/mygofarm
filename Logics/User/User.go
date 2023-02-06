@@ -15,6 +15,12 @@ func (userModel *UserModel) UserGetOneUser() (User.User, error) {
 	return userResult, nil
 }
 
+func (userModel *UserModel) UserLoginUser() (User.User, error) {
+	var userResult User.User
+	Rom.Db.Find(&userResult, userModel.UserName,userModel.Password)
+	return userResult, nil
+}
+
 func (userModel *UserModel) UserSignUser() (int64, error) {
 	result := Rom.Db.Select("userid", "username", "password", "email", "gender").Create(userModel)
 	if result.RowsAffected != 1 {
