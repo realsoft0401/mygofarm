@@ -80,3 +80,25 @@ func SignUpHandler(c *gin.Context) {
 	//3.返回响应
 	HttpResponse.ResponseSuccess(c, result)
 }
+
+func GetoneUserHandler(c *gin.Context) {
+	p := new(User.User)
+	if err := c.ShouldBindJSON(&p); err != nil {
+		//请求参数有误
+		zap.L().Error("SignUp with invalid param", zap.Error(err))
+		HttpResponse.ResponseErrorWithMsg(c, HttpResponse.CodeFormatError, "请求参数格式错误")
+		return
+	}
+	LogicUser := &Logicuser.UserModel{User.User{p.Id, p.Userid, p.Password, p.UserName, p.Email, p.Gender, p.RePassword}}
+	var result, err = LogicUser.UserGetOneUser()
+	if err != nil {
+		if errors.Is(err, ErrorUserExit) {
+			HttpResponse.ResponseError(c, HttpResponse.CodeUserExist)
+			return
+		}
+		HttpResponse.ResponseError(c, HttpResponse.CodeServerBusy)
+		return
+	}
+	//3.返回响应
+	HttpResponse.ResponseSuccess(c, result)
+}
