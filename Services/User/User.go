@@ -2,7 +2,7 @@ package User
 
 import (
 	"errors"
-	Logicsuser "mygofarm/Logics/User"
+	Logicuser "mygofarm/Logics/User"
 	"mygofarm/Models/User"
 	"mygofarm/Pkg/HttpResponse"
 
@@ -23,17 +23,40 @@ func SignHandler(c *gin.Context) {
 		HttpResponse.ResponseErrorWithMsg(c, HttpResponse.CodeInvalidParams, "参数不能为空或者密码与校验密码不相同")
 		return
 	}
-
-	puser := &Logicsuser.UserModel{User.User{p.Id, p.Userid, p.Password, p.UserName, p.Email, p.Gender, p.RePassword}}
-	if _, err := puser.UserSignUser(); err != nil {
+	LogicUser := &Logicuser.UserModel{User.User{p.Id, p.Userid, p.Password, p.UserName, p.Email, p.Gender, p.RePassword}}
+	var result,err = LogicUser.UserSignUser()
+	if  err != nil {
 		if errors.Is(err, ErrorUserExit) {
 			HttpResponse.ResponseError(c, HttpResponse.CodeUserExist)
 			return
 		}
 		HttpResponse.ResponseError(c, HttpResponse.CodeServerBusy)
-
 		return
 	}
 	//3.返回响应
-	HttpResponse.ResponseSuccess(c, nil)
+	HttpResponse.ResponseSuccess(c, result)
 }
+
+func SignDelHandler(c *gin.Context)  {
+	p := new(User.User)
+	if err := c.ShouldBindJSON(&p); err != nil {
+		//请求参数有误
+		zap.L().Error("SignUp with invalid param", zap.Error(err))
+		HttpResponse.ResponseErrorWithMsg(c, HttpResponse.CodeFormatError, "请求参数格式错误")
+		return
+	}
+	LogicUser := &Logicuser.UserModel{User.User{p.Id, p.Userid, p.Password, p.UserName, p.Email, p.Gender, p.RePassword}}
+	var result,err = LogicUser.UserSignDelUser()
+	if  err != nil {
+		if errors.Is(err, ErrorUserExit) {
+			HttpResponse.ResponseError(c, HttpResponse.CodeUserExist)
+			return
+		}
+		HttpResponse.ResponseError(c, HttpResponse.CodeServerBusy)
+		return
+	}
+	//3.返回响应
+	HttpResponse.ResponseSuccess(c, result)
+}
+
+

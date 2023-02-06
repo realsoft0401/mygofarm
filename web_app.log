@@ -1,0 +1,6 @@
+{"level":"INFO","time":"2023-02-06T14:15:22.229+0800","caller":"Infrastructures/Init.go:36","msg":"loading logger success..."}
+{"level":"INFO","time":"2023-02-06T14:15:22.236+0800","caller":"Infrastructures/Init.go:43","msg":"loading mysqlconfig success..."}
+{"level":"INFO","time":"2023-02-06T14:15:22.237+0800","caller":"Infrastructures/Init.go:50","msg":"loading redisconfig success..."}
+{"level":"INFO","time":"2023-02-06T14:15:43.405+0800","caller":"Logger/Logger.go:76","msg":"/signup","status":200,"method":"POST","path":"/signup","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime/7.30.0","errors":"","cost":0.010660859}
+{"level":"INFO","time":"2023-02-06T14:16:00.091+0800","caller":"Infrastructures/Init.go:93","msg":"Shutdown Server ..."}
+{"level":"INFO","time":"2023-02-06T14:16:00.092+0800","caller":"Infrastructures/Init.go:101","msg":"Server exiting ..."}

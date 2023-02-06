@@ -2,7 +2,9 @@ package Routes
 
 import (
 	"fmt"
+	"mygofarm/Middlewares"
 	"mygofarm/Pkg/Logger"
+	"mygofarm/Services/Public"
 	"mygofarm/Services/User"
 	"mygofarm/Settings"
 
@@ -23,29 +25,9 @@ func Setup() *gin.Engine {
 	r.GET("/version", func(c *gin.Context) {
 		c.String(http.StatusOK, fmt.Sprintf("系统版本信息:%s\n", Settings.Conf.Version))
 	})
-	r.POST("/signup", User.SignHandler)
-
-	//r.GET("/ping", Middlewares.JWTAuthMiddleware(), func(c *gin.Context) {
-	//
-	//	userid := c.MustGet("userid").(int64)
-	//	username := c.MustGet("username").(string)
-	//	if username != "" && userid != 0 {
-	//		c.JSON(http.StatusOK, gin.H{
-	//			"code": 2000,
-	//			"msg":  "success",
-	//			"data": gin.H{
-	//				"userid":   userid,
-	//				"username": username,
-	//			},
-	//		})
-	//	} else {
-	//		c.JSON(http.StatusOK, gin.H{
-	//			"code": 2001,
-	//			"msg":  "error",
-	//			"data": "JWT为空或者错误",
-	//		})
-	//	}
-	//})
+	r.POST("/signadd", User.SignHandler)
+	r.POST("/signadd", User.SignHandler)
+	r.POST("/signdel", Middlewares.JWTAuthMiddleware(),Public.JWTAuthCheck(),User.SignDelHandler)
 
 	return r
 }
