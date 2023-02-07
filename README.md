@@ -69,3 +69,44 @@ UNIQUE KEY `idx_user_id` (`userid`) USING BTREE
 
 SET FOREIGN_KEY_CHECKS = 1;
 ```
+##目录说明
+```
+├── Infrastructures 架构基础服务
+│         ├── Init.go   服务初始化
+│         ├── Redis Redis服务类
+│         └── Rom   Mysql服务类
+├── Interfaces  接口声明
+│         └── User  用户接口声明
+├── LICENSE
+├── Logics  服务逻辑层
+│         ├── Public    公共数据操作类
+│         └── User  用户数据操作类
+├── Middlewares 中间件服务类
+│         └── Auth.go
+├── Models  模型层
+│         ├── Response  Swagger针对Service发布时Response接口模型
+│         ├── Swagger   Swagger针对Service发布时请求接口模型
+│         └── User  用户数据库模型层
+├── Pkg 项目引入包
+│         ├── HttpResponse  Response消息返回类
+│         ├── Jwt   Jwt密钥类
+│         └── Logger    日志服务类
+├── README.md
+├── Routes  路由配置目录
+│         └── Routes.go 路由服务类
+├── Services    服务接口类
+│         ├── Public    公共服务类
+│         └── User      用户接口类实现
+├── Settings    架构配置目录
+│         ├── config.yaml   配置文件
+│         └── settings.go   配置文件解析类
+├── docs    swagger生成的接口相关问文档
+│         ├── docs.go
+│         ├── swagger.json
+│         └── swagger.yaml
+├── go.mod
+├── go.sum
+├── main    编译文件
+├── main.go 启动入口
+└── web_app.log
+```
