@@ -69,7 +69,7 @@ UNIQUE KEY `idx_user_id` (`userid`) USING BTREE
 
 SET FOREIGN_KEY_CHECKS = 1;
 ```
-##目录说明
+## 目录说明
 ```
 ├── Infrastructures 架构基础服务
 │         ├── Init.go   服务初始化
