@@ -21,10 +21,7 @@ func Setup() *gin.Engine {
 	r.GET("/swagger/*any", gs.WrapHandler(swaggerFiles.Handler))
 	r.Use(Logger.GinLogger(), Logger.GinRecovery(true))
 	r.GET("/", func(c *gin.Context) {
-		c.String(http.StatusOK, "欢迎使用 GoFarm 脚手架")
-	})
-	r.GET("/version", func(c *gin.Context) {
-		c.String(http.StatusOK, fmt.Sprintf("系统版本信息:%s\n", Settings.Conf.Version))
+		c.String(http.StatusOK, fmt.Sprintf("欢迎使用 GoFarm 脚手架 \n 系统版本信息:%s\n", Settings.Conf.Version))
 	})
 	r.POST("/signadd", User.SignHandler)
 	r.POST("/login", User.LoginHandler)
