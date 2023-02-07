@@ -15,7 +15,7 @@ import (
 	_ "mygofarm/Models/Swagger/User"
 )
 
-// @用户登录接口
+// 用户登录接口
 // @Summary 用户登录接口
 // @Description 用户根据用户名、密码登录
 // @Tags 用户登录相关接口
@@ -59,7 +59,7 @@ func LoginHandler(c *gin.Context) {
 
 }
 
-// @用户注册接口
+// 用户注册接口
 // @Summary 用户注册接口
 // @Description 用户ID、名称、密码、性别、Emaill
 // @Tags 用户注册接口
@@ -107,6 +107,18 @@ func SignHandler(c *gin.Context) {
 	HttpResponse.ResponseSuccess(c, result)
 }
 
+// 用户删除接口
+// @Summary 用户删除接口
+// @Description 用户主键ID
+// @Tags 用户删除接口
+// @Accept application/json
+// @Produce application/json
+// @Param Authorization header string false "Bearer 用户令牌"
+// @Param req body SwaggerUser.SignDelHandler true "req"
+// @  type: SwaggerUser.SignDelHandler
+// @Security ApiKeyAuth
+// @Success 200 {object} Response._ResponsePostList
+// @Router /signdel [post]
 func SignDelHandler(c *gin.Context) {
 	p := new(User.User)
 	if err := c.ShouldBindJSON(&p); err != nil {
@@ -129,6 +141,18 @@ func SignDelHandler(c *gin.Context) {
 	HttpResponse.ResponseSuccess(c, result)
 }
 
+// 获取单个用户信息接口
+// @Summary 获取单个用户信息接口
+// @Description 用户主键ID
+// @Tags 获取单个用户信息接口
+// @Accept application/json
+// @Produce application/json
+// @Param Authorization header string false "Bearer 用户令牌"
+// @Param req body SwaggerUser.GetoneUserHandler true "req"
+// @  type: SwaggerUser.GetoneUserHandler
+// @Security ApiKeyAuth
+// @Success 200 {object} Response._ResponsePostList
+// @Router /signone [post]
 func GetoneUserHandler(c *gin.Context) {
 	p := new(User.User)
 	if err := c.ShouldBindJSON(&p); err != nil {

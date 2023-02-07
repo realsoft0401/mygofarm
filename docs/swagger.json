@@ -71,6 +71,96 @@
                     }
                 }
             }
+        },
+        "/signdel": {
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "用户主键ID",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "用户删除接口"
+                ],
+                "summary": "用户删除接口",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Bearer 用户令牌",
+                        "name": "Authorization",
+                        "in": "header"
+                    },
+                    {
+                        "description": "req",
+                        "name": "req",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/SwaggerUser.SignDelHandler"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response._ResponsePostList"
+                        }
+                    }
+                }
+            }
+        },
+        "/signone": {
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "用户主键ID",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "获取单个用户信息接口"
+                ],
+                "summary": "获取单个用户信息接口",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Bearer 用户令牌",
+                        "name": "Authorization",
+                        "in": "header"
+                    },
+                    {
+                        "description": "req",
+                        "name": "req",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/SwaggerUser.GetoneUserHandler"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response._ResponsePostList"
+                        }
+                    }
+                }
+            }
         }
     },
     "definitions": {
@@ -120,6 +210,15 @@
                 }
             }
         },
+        "SwaggerUser.GetoneUserHandler": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "description": "Id 用户主键ID",
+                    "type": "integer"
+                }
+            }
+        },
         "SwaggerUser.LoginHandler": {
             "type": "object",
             "properties": {
@@ -130,6 +229,15 @@
                 "username": {
                     "description": "Username description",
                     "type": "string"
+                }
+            }
+        },
+        "SwaggerUser.SignDelHandler": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "description": "Id 用户主键ID",
+                    "type": "integer"
                 }
             }
         },

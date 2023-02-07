@@ -34,6 +34,12 @@ definitions:
     - CodeInvalidToken
     - CodeInvalidAuthFormat
     - CodeNotLogin
+  SwaggerUser.GetoneUserHandler:
+    properties:
+      id:
+        description: Id 用户主键ID
+        type: integer
+    type: object
   SwaggerUser.LoginHandler:
     properties:
       password:
@@ -42,6 +48,12 @@ definitions:
       username:
         description: Username description
         type: string
+    type: object
+  SwaggerUser.SignDelHandler:
+    properties:
+      id:
+        description: Id 用户主键ID
+        type: integer
     type: object
   SwaggerUser.SignHandler:
     properties:
@@ -111,4 +123,60 @@ paths:
       summary: 用户注册接口
       tags:
       - 用户注册接口
+  /signdel:
+    post:
+      consumes:
+      - application/json
+      description: 用户主键ID
+      parameters:
+      - description: Bearer 用户令牌
+        in: header
+        name: Authorization
+        type: string
+      - description: req
+        in: body
+        name: req
+        required: true
+        schema:
+          $ref: '#/definitions/SwaggerUser.SignDelHandler'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/Response._ResponsePostList'
+      security:
+      - ApiKeyAuth: []
+      summary: 用户删除接口
+      tags:
+      - 用户删除接口
+  /signone:
+    post:
+      consumes:
+      - application/json
+      description: 用户主键ID
+      parameters:
+      - description: Bearer 用户令牌
+        in: header
+        name: Authorization
+        type: string
+      - description: req
+        in: body
+        name: req
+        required: true
+        schema:
+          $ref: '#/definitions/SwaggerUser.GetoneUserHandler'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/Response._ResponsePostList'
+      security:
+      - ApiKeyAuth: []
+      summary: 获取单个用户信息接口
+      tags:
+      - 获取单个用户信息接口
 swagger: "2.0"

@@ -21,3 +21,13 @@ type SignHandler struct {
 	// RePassword 二次密码验证
 	RePassword string `json:"repassword"`
 }
+
+type SignDelHandler struct {
+	// Id 用户主键ID
+	Id int64 `json:"id"`
+}
+
+type GetoneUserHandler struct {
+	// Id 用户主键ID
+	Id int64 `json:"id"`
+}
