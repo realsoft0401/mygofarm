@@ -1,0 +1,114 @@
+definitions:
+  Response._ResponsePostList:
+    properties:
+      code:
+        allOf:
+        - $ref: '#/definitions/Response.ResCode'
+        description: 业务响应状态码
+      data:
+        description: 数据
+        type: string
+      message:
+        description: 提示信息
+        type: string
+    type: object
+  Response.ResCode:
+    enum:
+    - 1000
+    - 1001
+    - 1002
+    - 1003
+    - 1004
+    - 1005
+    - 1006
+    - 1007
+    - 1008
+    type: integer
+    x-enum-varnames:
+    - CodeSuccess
+    - CodeInvalidParams
+    - CodeUserExist
+    - CodeUserNotExist
+    - CodeInvalidPassword
+    - CodeServerBusy
+    - CodeInvalidToken
+    - CodeInvalidAuthFormat
+    - CodeNotLogin
+  SwaggerUser.LoginHandler:
+    properties:
+      password:
+        description: Password description
+        type: string
+      username:
+        description: Username description
+        type: string
+    type: object
+  SwaggerUser.SignHandler:
+    properties:
+      email:
+        description: Email 用户email
+        type: string
+      gender:
+        description: Gender 用户性别
+        type: string
+      password:
+        description: Password 用户密码
+        type: string
+      repassword:
+        description: RePassword 二次密码验证
+        type: string
+      userid:
+        description: UserId 用户ID
+        type: integer
+      username:
+        description: Username 用户名称
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /login:
+    post:
+      consumes:
+      - application/json
+      description: 用户根据用户名、密码登录
+      parameters:
+      - description: req
+        in: body
+        name: req
+        required: true
+        schema:
+          $ref: '#/definitions/SwaggerUser.LoginHandler'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/Response._ResponsePostList'
+      summary: 用户登录接口
+      tags:
+      - 用户登录相关接口
+  /signadd:
+    post:
+      consumes:
+      - application/json
+      description: 用户ID、名称、密码、性别、Emaill
+      parameters:
+      - description: req
+        in: body
+        name: req
+        required: true
+        schema:
+          $ref: '#/definitions/SwaggerUser.SignHandler'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/Response._ResponsePostList'
+      summary: 用户注册接口
+      tags:
+      - 用户注册接口
+swagger: "2.0"

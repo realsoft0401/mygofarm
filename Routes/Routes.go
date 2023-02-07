@@ -9,6 +9,8 @@ import (
 
 	"net/http"
 
+	_ "mygofarm/docs"
+
 	"github.com/gin-gonic/gin"
 	swaggerFiles "github.com/swaggo/files"
 	gs "github.com/swaggo/gin-swagger"
@@ -19,14 +21,15 @@ func Setup() *gin.Engine {
 	r.GET("/swagger/*any", gs.WrapHandler(swaggerFiles.Handler))
 	r.Use(Logger.GinLogger(), Logger.GinRecovery(true))
 	r.GET("/", func(c *gin.Context) {
-		c.String(http.StatusOK, "OK")
+		c.String(http.StatusOK, "欢迎使用 GoFarm 脚手架")
 	})
 	r.GET("/version", func(c *gin.Context) {
 		c.String(http.StatusOK, fmt.Sprintf("系统版本信息:%s\n", Settings.Conf.Version))
 	})
 	r.POST("/signadd", User.SignHandler)
 	r.POST("/login", User.LoginHandler)
-	r.POST("/signdel", Middlewares.JWTAuthMiddleware(),User.SignDelHandler)
+	r.POST("/signdel", Middlewares.JWTAuthMiddleware(), User.SignDelHandler)
+	r.POST("/signone", Middlewares.JWTAuthMiddleware(), User.GetoneUserHandler)
 
 	return r
 }

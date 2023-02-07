@@ -17,7 +17,9 @@ func (userModel *UserModel) UserGetOneUser() (User.User, error) {
 
 func (userModel *UserModel) UserLoginUser() (User.User, error) {
 	var userResult User.User
-	Rom.Db.Find(&userResult, userModel.UserName,userModel.Password)
+	//fmt.Printf("username:%v\n", userModel.UserName)
+	//fmt.Printf("password:%v\n", userModel.Password)
+	Rom.Db.Find(&userResult, map[string]interface{}{"username": userModel.UserName, "password": userModel.Password})
 	return userResult, nil
 }
 
@@ -30,8 +32,7 @@ func (userModel *UserModel) UserSignUser() (int64, error) {
 }
 
 func (userModel *UserModel) UserSignUpUser() (int64, error) {
-	result := Rom.Db.Model(userModel).Update("username", "gender")
-	//result := db.Model(User{}).Where("role = ?", "admin").Updates(User{Name: "hello", Age: 18})
+	result := Rom.Db.Model(userModel).Updates(map[string]interface{}{"username": userModel.UserName, "email": userModel.Email, "gender": userModel.Gender})
 	if result.RowsAffected != 1 {
 		return 0, result.Error
 	}
