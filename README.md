@@ -1,5 +1,5 @@
 # 简介
-这是福佑家和go脚手架架构，为机构后台、运营后台提供创作者管理能力。
+gofarm是服务端框架用Gin框架来实现，用restful设计风格和开发方式，为机构后台、运营后台提供创作者管理能力。
 
 
 
@@ -69,9 +69,10 @@ UNIQUE KEY `idx_user_id` (`userid`) USING BTREE
 
 SET FOREIGN_KEY_CHECKS = 1;
 ```
-
 ## 目录说明
 ```
+├── deploy K8s部署脚本
+│         └── deployment.yaml
 ├── Infrastructures 架构基础服务
 │         ├── Init.go   服务初始化
 │         ├── Redis Redis服务类
@@ -107,6 +108,7 @@ SET FOREIGN_KEY_CHECKS = 1;
 │         └── swagger.yaml
 ├── go.mod
 ├── go.sum
+├── Dockerfile 架构容器化脚本
 ├── main    编译文件
 ├── main.go 启动入口
 └── web_app.log
