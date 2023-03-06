@@ -1,13 +1,13 @@
-package SwaggerUser
+package User
 
-type LoginHandler struct {
+type LoginModelHandler struct {
 	// Username description
 	Username string `json:"username"`
 	// Password description
 	Password string `json:"password"`
 }
 
-type SignHandler struct {
+type SignModelHandler struct {
 	// UserId 用户ID
 	UserId int64 `json:"userid"`
 	// Username 用户名称
@@ -22,12 +22,12 @@ type SignHandler struct {
 	RePassword string `json:"repassword"`
 }
 
-type SignDelHandler struct {
+type SignDelModelHandler struct {
 	// Id 用户主键ID
 	Id int64 `json:"id"`
 }
 
-type GetoneUserHandler struct {
+type GetoneUserModelHandler struct {
 	// Id 用户主键ID
 	Id int64 `json:"id"`
 }

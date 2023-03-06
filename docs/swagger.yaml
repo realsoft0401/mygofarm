@@ -34,13 +34,19 @@ definitions:
     - CodeInvalidToken
     - CodeInvalidAuthFormat
     - CodeNotLogin
-  SwaggerUser.GetoneUserHandler:
+  User.SignDelModelHandler:
     properties:
       id:
         description: Id 用户主键ID
         type: integer
     type: object
-  SwaggerUser.LoginHandler:
+  mygofarm_Models_User.GetoneUserModelHandler:
+    properties:
+      id:
+        description: Id 用户主键ID
+        type: integer
+    type: object
+  mygofarm_Models_User.LoginModelHandler:
     properties:
       password:
         description: Password description
@@ -49,13 +55,7 @@ definitions:
         description: Username description
         type: string
     type: object
-  SwaggerUser.SignDelHandler:
-    properties:
-      id:
-        description: Id 用户主键ID
-        type: integer
-    type: object
-  SwaggerUser.SignHandler:
+  mygofarm_Models_User.SignModelHandler:
     properties:
       email:
         description: Email 用户email
@@ -90,7 +90,7 @@ paths:
         name: req
         required: true
         schema:
-          $ref: '#/definitions/SwaggerUser.LoginHandler'
+          $ref: '#/definitions/mygofarm_Models_User.LoginModelHandler'
       produces:
       - application/json
       responses:
@@ -112,7 +112,7 @@ paths:
         name: req
         required: true
         schema:
-          $ref: '#/definitions/SwaggerUser.SignHandler'
+          $ref: '#/definitions/mygofarm_Models_User.SignModelHandler'
       produces:
       - application/json
       responses:
@@ -138,7 +138,7 @@ paths:
         name: req
         required: true
         schema:
-          $ref: '#/definitions/SwaggerUser.SignDelHandler'
+          $ref: '#/definitions/User.SignDelModelHandler'
       produces:
       - application/json
       responses:
@@ -166,7 +166,7 @@ paths:
         name: req
         required: true
         schema:
-          $ref: '#/definitions/SwaggerUser.GetoneUserHandler'
+          $ref: '#/definitions/mygofarm_Models_User.GetoneUserModelHandler'
       produces:
       - application/json
       responses:

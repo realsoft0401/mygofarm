@@ -35,7 +35,7 @@ const docTemplate = `{
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/SwaggerUser.LoginHandler"
+                            "$ref": "#/definitions/mygofarm_Models_User.LoginModelHandler"
                         }
                     }
                 ],
@@ -69,7 +69,7 @@ const docTemplate = `{
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/SwaggerUser.SignHandler"
+                            "$ref": "#/definitions/mygofarm_Models_User.SignModelHandler"
                         }
                     }
                 ],
@@ -114,7 +114,7 @@ const docTemplate = `{
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/SwaggerUser.SignDelHandler"
+                            "$ref": "#/definitions/User.SignDelModelHandler"
                         }
                     }
                 ],
@@ -159,7 +159,7 @@ const docTemplate = `{
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/SwaggerUser.GetoneUserHandler"
+                            "$ref": "#/definitions/mygofarm_Models_User.GetoneUserModelHandler"
                         }
                     }
                 ],
@@ -221,7 +221,7 @@ const docTemplate = `{
                 }
             }
         },
-        "SwaggerUser.GetoneUserHandler": {
+        "User.SignDelModelHandler": {
             "type": "object",
             "properties": {
                 "id": {
@@ -230,7 +230,16 @@ const docTemplate = `{
                 }
             }
         },
-        "SwaggerUser.LoginHandler": {
+        "mygofarm_Models_User.GetoneUserModelHandler": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "description": "Id 用户主键ID",
+                    "type": "integer"
+                }
+            }
+        },
+        "mygofarm_Models_User.LoginModelHandler": {
             "type": "object",
             "properties": {
                 "password": {
@@ -243,16 +252,7 @@ const docTemplate = `{
                 }
             }
         },
-        "SwaggerUser.SignDelHandler": {
-            "type": "object",
-            "properties": {
-                "id": {
-                    "description": "Id 用户主键ID",
-                    "type": "integer"
-                }
-            }
-        },
-        "SwaggerUser.SignHandler": {
+        "mygofarm_Models_User.SignModelHandler": {
             "type": "object",
             "properties": {
                 "email": {

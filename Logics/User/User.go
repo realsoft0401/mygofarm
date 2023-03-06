@@ -5,25 +5,42 @@ import (
 	"mygofarm/Models/User"
 )
 
-type UserModel struct {
-	User.User
+/*
+获取一个用户信息
+*/
+type GetoneUserModelHandler struct {
+	User.GetoneUserModelHandler
 }
 
-func (userModel *UserModel) UserGetOneUser() (User.User, error) {
+func (userModel *GetoneUserModelHandler) UserGetOneUser() (User.User, error) {
 	var userResult User.User
 	Rom.Db.Find(&userResult, userModel.Id)
 	return userResult, nil
 }
 
-func (userModel *UserModel) UserLoginUser() (User.User, error) {
+/*
+获取用户登录
+*/
+type LoginModelHandler struct {
+	User.LoginModelHandler
+}
+
+func (userModel *LoginModelHandler) UserLoginUser() (User.User, error) {
 	var userResult User.User
 	//fmt.Printf("username:%v\n", userModel.UserName)
 	//fmt.Printf("password:%v\n", userModel.Password)
-	Rom.Db.Find(&userResult, map[string]interface{}{"username": userModel.UserName, "password": userModel.Password})
+	Rom.Db.Find(&userResult, map[string]interface{}{"username": userModel.Username, "password": userModel.Password})
 	return userResult, nil
 }
 
-func (userModel *UserModel) UserSignUser() (int64, error) {
+/*
+修改用户信息
+*/
+type SignModelHandler struct {
+	User.SignModelHandler
+}
+
+func (userModel *SignModelHandler) UserSignUser() (int64, error) {
 	result := Rom.Db.Select("userid", "username", "password", "email", "gender").Create(userModel)
 	if result.RowsAffected != 1 {
 		return 0, result.Error
@@ -31,15 +48,29 @@ func (userModel *UserModel) UserSignUser() (int64, error) {
 	return result.RowsAffected, nil
 }
 
-func (userModel *UserModel) UserSignUpUser() (int64, error) {
-	result := Rom.Db.Model(userModel).Updates(map[string]interface{}{"username": userModel.UserName, "email": userModel.Email, "gender": userModel.Gender})
+/*
+添加一个用户信息
+*/
+type SignUpUserHandler struct {
+	User.SignModelHandler
+}
+
+func (userModel *SignUpUserHandler) UserSignUpUser() (int64, error) {
+	result := Rom.Db.Model(userModel).Updates(map[string]interface{}{"username": userModel.Username, "email": userModel.Email, "gender": userModel.Gender})
 	if result.RowsAffected != 1 {
 		return 0, result.Error
 	}
 	return result.RowsAffected, nil
 }
 
-func (userModel *UserModel) UserSignDelUser() (int64, error) {
+/*
+删除用户信息
+*/
+type UserSignDelUser struct {
+	User.SignDelModelHandler
+}
+
+func (userModel *UserSignDelUser) UserSignDelUser() (int64, error) {
 	result := Rom.Db.Where("id", userModel.Id).Delete(userModel)
 	if result.RowsAffected != 1 {
 		return 0, result.Error

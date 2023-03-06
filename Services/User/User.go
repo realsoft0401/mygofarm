@@ -7,12 +7,11 @@ import (
 	"mygofarm/Pkg/HttpResponse"
 	"mygofarm/Pkg/Jwt"
 	"mygofarm/Services/Public"
+	"strconv"
 
 	"github.com/bwmarrin/snowflake"
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
-
-	_ "mygofarm/Models/Swagger/User"
 )
 
 // 用户登录接口
@@ -21,24 +20,29 @@ import (
 // @Tags 用户登录相关接口
 // @Accept application/json
 // @Produce application/json
-// @Param req body SwaggerUser.LoginHandler true "req"
-// @	type: SwaggerUser.LoginHandler
+// @Param req body User.LoginModelHandler true "req"
+// @	type: User.LoginModelHandler
 // @Success 200 {object} Response._ResponsePostList
 // @Router /login [post]
 func LoginHandler(c *gin.Context) {
 	//1.获取参数和参数校验
-	p := new(User.User)
-	if err := c.ShouldBindJSON(&p); err != nil {
-		HttpResponse.ResponseErrorWithMsg(c, HttpResponse.CodeInvalidParams, "参数格式错误")
-		return
-	}
-	if len(p.UserName) == 0 || len(p.Password) == 0 {
+	UserName := c.Query("username")
+	PassWord := c.Query("password")
+	//p := new(User.User)
+	//if err := c.ShouldBindJSON(&p); err != nil {
+	//	HttpResponse.ResponseErrorWithMsg(c, HttpResponse.CodeInvalidParams, "参数格式错误")
+	//	return
+	//}
+	if len(UserName) == 0 || len(PassWord) == 0 {
 		//请求参数有误
 		HttpResponse.ResponseErrorWithMsg(c, HttpResponse.CodeInvalidParams, "参数不能为空")
 		return
 	}
-	password := Public.EncryptPassword(p.Password)
-	LogicUser := &Logicuser.UserModel{User.User{p.Id, p.UserId, password, p.UserName, p.Email, p.Gender, p.RePassword}}
+	PW := Public.EncryptPassword(PassWord)
+	LogicUser := &Logicuser.LoginModelHandler{User.LoginModelHandler{
+		Username: UserName,
+		Password: PW,
+	}}
 	var result, err = LogicUser.UserLoginUser()
 	if err != nil {
 		if errors.Is(err, ErrorUserExit) {
@@ -48,7 +52,7 @@ func LoginHandler(c *gin.Context) {
 		HttpResponse.ResponseError(c, HttpResponse.CodeServerBusy)
 		return
 	}
-	if result.UserId == 0 {
+	if result.Id == 0 {
 		//请求参数有误
 		HttpResponse.ResponseErrorWithMsg(c, HttpResponse.CodeInvalidParams, "帐号或者密码错误")
 		return
@@ -65,8 +69,8 @@ func LoginHandler(c *gin.Context) {
 // @Tags 用户注册接口
 // @Accept application/json
 // @Produce application/json
-// @Param req body SwaggerUser.SignHandler true "req"
-// @  type: SwaggerUser.SignHandler
+// @Param req body User.SignModelHandler true "req"
+// @  type: User.SignModelHandler
 // @Success 200 {object} Response._ResponsePostList
 // @Router /signadd [post]
 func SignHandler(c *gin.Context) {
@@ -93,7 +97,14 @@ func SignHandler(c *gin.Context) {
 	UserId := node.Generate().Int64()
 
 	password := Public.EncryptPassword(p.Password)
-	LogicUser := &Logicuser.UserModel{User.User{p.Id, UserId, password, p.UserName, p.Email, p.Gender, p.RePassword}}
+	LogicUser := &Logicuser.SignModelHandler{User.SignModelHandler{
+		UserId:     UserId,
+		Username:   p.UserName,
+		Password:   password,
+		Email:      p.Email,
+		Gender:     p.Gender,
+		RePassword: password,
+	}}
 	var result, err = LogicUser.UserSignUser()
 	if err != nil {
 		if errors.Is(err, ErrorUserExit) {
@@ -114,20 +125,26 @@ func SignHandler(c *gin.Context) {
 // @Accept application/json
 // @Produce application/json
 // @Param Authorization header string false "Bearer 用户令牌"
-// @Param req body SwaggerUser.SignDelHandler true "req"
-// @  type: SwaggerUser.SignDelHandler
+// @Param req body User.SignDelModelHandler true "req"
+// @  type: User.SignDelModelHandler
 // @Security ApiKeyAuth
 // @Success 200 {object} Response._ResponsePostList
 // @Router /signdel [post]
 func SignDelHandler(c *gin.Context) {
-	p := new(User.User)
-	if err := c.ShouldBindJSON(&p); err != nil {
-		//请求参数有误
-		zap.L().Error("SignUp with invalid param", zap.Error(err))
-		HttpResponse.ResponseErrorWithMsg(c, HttpResponse.CodeFormatError, "请求参数格式错误")
+	id := c.Query("id")
+	//if err := c.ShouldBindJSON(&p); err != nil {
+	//	//请求参数有误
+	//	zap.L().Error("SignUp with invalid param", zap.Error(err))
+	//	HttpResponse.ResponseErrorWithMsg(c, HttpResponse.CodeFormatError, "请求参数格式错误")
+	//	return
+	//}
+	Id, erro := strconv.ParseInt(id, 10, 64)
+	if erro != nil {
+		zap.L().Error("SignUp with invalid param", zap.Error(erro))
+		HttpResponse.ResponseErrorWithMsg(c, HttpResponse.CodeFormatError, "请求Id参数格式错误")
 		return
 	}
-	LogicUser := &Logicuser.UserModel{User.User{p.Id, p.UserId, p.Password, p.UserName, p.Email, p.Gender, p.RePassword}}
+	LogicUser := &Logicuser.UserSignDelUser{User.SignDelModelHandler{Id: Id}}
 	var result, err = LogicUser.UserSignDelUser()
 	if err != nil {
 		if errors.Is(err, ErrorUserExit) {
@@ -148,20 +165,20 @@ func SignDelHandler(c *gin.Context) {
 // @Accept application/json
 // @Produce application/json
 // @Param Authorization header string false "Bearer 用户令牌"
-// @Param req body SwaggerUser.GetoneUserHandler true "req"
-// @  type: SwaggerUser.GetoneUserHandler
+// @Param req body User.GetoneUserModelHandler true "req"
+// @  type: User.GetoneUserModelHandler
 // @Security ApiKeyAuth
 // @Success 200 {object} Response._ResponsePostList
 // @Router /signone [post]
 func GetoneUserHandler(c *gin.Context) {
-	p := new(User.User)
-	if err := c.ShouldBindJSON(&p); err != nil {
-		//请求参数有误
-		zap.L().Error("SignUp with invalid param", zap.Error(err))
-		HttpResponse.ResponseErrorWithMsg(c, HttpResponse.CodeFormatError, "请求参数格式错误")
+	id := c.Query("id")
+	Id, erro := strconv.ParseInt(id, 10, 64)
+	if erro != nil {
+		zap.L().Error("SignUp with invalid param", zap.Error(erro))
+		HttpResponse.ResponseErrorWithMsg(c, HttpResponse.CodeFormatError, "请求Id参数格式错误")
 		return
 	}
-	LogicUser := &Logicuser.UserModel{User.User{p.Id, p.UserId, p.Password, p.UserName, p.Email, p.Gender, p.RePassword}}
+	LogicUser := &Logicuser.GetoneUserModelHandler{User.GetoneUserModelHandler{Id: Id}}
 	var result, err = LogicUser.UserGetOneUser()
 	if err != nil {
 		if errors.Is(err, ErrorUserExit) {
