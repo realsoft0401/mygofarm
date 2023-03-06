@@ -1,3 +1,4 @@
+[![License](https://img.shields.io/badge/license-Apache%202-4EB1BA.svg)](https://www.apache.org/licenses/LICENSE-2.0.html)
 # 简介
 gofarm是服务端框架用Gin框架来实现，用restful设计风格和开发方式，为机构后台、运营后台提供创作者管理能力。
 
