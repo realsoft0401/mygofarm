@@ -1,9 +1,11 @@
 package Middlewares
+
 import (
 	"mygofarm/Pkg/HttpResponse"
 	"mygofarm/Pkg/Jwt"
-	"github.com/gin-gonic/gin"
 	"strings"
+
+	"github.com/gin-gonic/gin"
 )
 
 // JWTAuthMiddleware 基于JWT的认证中间件
@@ -30,7 +32,7 @@ func JWTAuthMiddleware() func(c *gin.Context) {
 		// parts[1]是获取到的tokenString，我们使用之前定义好的解析JWT的函数来解析它
 		mc, err := Jwt.ParseToken(parts[1])
 		if err != nil {
-			HttpResponse.ResponseError(c, HttpResponse.CodeInvalidParams)
+			HttpResponse.ResponseError(c, HttpResponse.CodeInvalidToken)
 			c.Abort()
 			return
 		}
