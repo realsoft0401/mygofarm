@@ -7,7 +7,6 @@ import (
 	"mygofarm/Pkg/HttpResponse"
 	"mygofarm/Pkg/Jwt"
 	"mygofarm/Services/Public"
-	"strconv"
 
 	"github.com/bwmarrin/snowflake"
 	"github.com/gin-gonic/gin"
@@ -26,21 +25,19 @@ import (
 // @Router /login [post]
 func LoginHandler(c *gin.Context) {
 	//1.获取参数和参数校验
-	UserName := c.Query("username")
-	PassWord := c.Query("password")
-	//p := new(User.User)
-	//if err := c.ShouldBindJSON(&p); err != nil {
-	//	HttpResponse.ResponseErrorWithMsg(c, HttpResponse.CodeInvalidParams, "参数格式错误")
-	//	return
-	//}
-	if len(UserName) == 0 || len(PassWord) == 0 {
+	p := new(User.LoginModelHandler)
+	if err := c.ShouldBindJSON(&p); err != nil {
+		HttpResponse.ResponseErrorWithMsg(c, HttpResponse.CodeInvalidParams, "参数格式错误")
+		return
+	}
+	if len(p.Username) == 0 || len(p.Password) == 0 {
 		//请求参数有误
 		HttpResponse.ResponseErrorWithMsg(c, HttpResponse.CodeInvalidParams, "参数不能为空")
 		return
 	}
-	PW := Public.EncryptPassword(PassWord)
+	PW := Public.EncryptPassword(p.Password)
 	LogicUser := &Logicuser.LoginModelHandler{User.LoginModelHandler{
-		Username: UserName,
+		Username: p.Username,
 		Password: PW,
 	}}
 	var result, err = LogicUser.UserLoginUser()
@@ -131,20 +128,15 @@ func SignHandler(c *gin.Context) {
 // @Success 200 {object} Response._ResponsePostList
 // @Router /signdel [post]
 func SignDelHandler(c *gin.Context) {
-	id := c.Query("id")
-	//if err := c.ShouldBindJSON(&p); err != nil {
-	//	//请求参数有误
-	//	zap.L().Error("SignUp with invalid param", zap.Error(err))
-	//	HttpResponse.ResponseErrorWithMsg(c, HttpResponse.CodeFormatError, "请求参数格式错误")
-	//	return
-	//}
-	Id, erro := strconv.ParseInt(id, 10, 64)
-	if erro != nil {
-		zap.L().Error("SignUp with invalid param", zap.Error(erro))
-		HttpResponse.ResponseErrorWithMsg(c, HttpResponse.CodeFormatError, "请求Id参数格式错误")
+	//1.获取参数和参数校验
+	p := new(User.SignDelModelHandler)
+	if err := c.ShouldBindJSON(&p); err != nil {
+		//请求参数有误
+		zap.L().Error("SignDel with invalid param", zap.Error(err))
+		HttpResponse.ResponseErrorWithMsg(c, HttpResponse.CodeFormatError, "请求参数格式错误")
 		return
 	}
-	LogicUser := &Logicuser.UserSignDelUser{User.SignDelModelHandler{Id: Id}}
+	LogicUser := &Logicuser.UserSignDelUser{User.SignDelModelHandler{Id: p.Id}}
 	var result, err = LogicUser.UserSignDelUser()
 	if err != nil {
 		if errors.Is(err, ErrorUserExit) {
@@ -171,14 +163,15 @@ func SignDelHandler(c *gin.Context) {
 // @Success 200 {object} Response._ResponsePostList
 // @Router /signone [post]
 func GetoneUserHandler(c *gin.Context) {
-	id := c.Query("id")
-	Id, erro := strconv.ParseInt(id, 10, 64)
-	if erro != nil {
-		zap.L().Error("SignUp with invalid param", zap.Error(erro))
-		HttpResponse.ResponseErrorWithMsg(c, HttpResponse.CodeFormatError, "请求Id参数格式错误")
+	//1.获取参数和参数校验
+	p := new(User.SignDelModelHandler)
+	if err := c.ShouldBindJSON(&p); err != nil {
+		//请求参数有误
+		zap.L().Error("Getone with invalid param", zap.Error(err))
+		HttpResponse.ResponseErrorWithMsg(c, HttpResponse.CodeFormatError, "请求参数格式错误")
 		return
 	}
-	LogicUser := &Logicuser.GetoneUserModelHandler{User.GetoneUserModelHandler{Id: Id}}
+	LogicUser := &Logicuser.GetoneUserModelHandler{User.GetoneUserModelHandler{Id: p.Id}}
 	var result, err = LogicUser.UserGetOneUser()
 	if err != nil {
 		if errors.Is(err, ErrorUserExit) {

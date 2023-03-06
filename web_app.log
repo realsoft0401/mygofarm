@@ -4,3 +4,99 @@
 {"level":"INFO","time":"2023-02-06T14:15:43.405+0800","caller":"Logger/Logger.go:76","msg":"/signup","status":200,"method":"POST","path":"/signup","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime/7.30.0","errors":"","cost":0.010660859}
 {"level":"INFO","time":"2023-02-06T14:16:00.091+0800","caller":"Infrastructures/Init.go:93","msg":"Shutdown Server ..."}
 {"level":"INFO","time":"2023-02-06T14:16:00.092+0800","caller":"Infrastructures/Init.go:101","msg":"Server exiting ..."}
+{"level":"INFO","time":"2023-03-06T12:00:58.392+0800","caller":"Infrastructures/Init.go:36","msg":"loading logger success..."}
+{"level":"INFO","time":"2023-03-06T12:00:58.399+0800","caller":"Infrastructures/Init.go:43","msg":"loading mysqlconfig success..."}
+{"level":"INFO","time":"2023-03-06T12:00:58.401+0800","caller":"Infrastructures/Init.go:50","msg":"loading redisconfig success..."}
+{"level":"INFO","time":"2023-03-06T12:01:13.541+0800","caller":"Logger/Logger.go:76","msg":"/favicon.ico","status":404,"method":"GET","path":"/favicon.ico","query":"","ip":"127.0.0.1","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36","errors":"","cost":0.000000523}
+{"level":"INFO","time":"2023-03-06T12:02:09.898+0800","caller":"Infrastructures/Init.go:93","msg":"Shutdown Server ..."}
+{"level":"INFO","time":"2023-03-06T12:02:09.900+0800","caller":"Infrastructures/Init.go:101","msg":"Server exiting ..."}
+{"level":"INFO","time":"2023-03-06T12:02:58.134+0800","caller":"Infrastructures/Init.go:36","msg":"loading logger success..."}
+{"level":"INFO","time":"2023-03-06T12:02:58.142+0800","caller":"Infrastructures/Init.go:43","msg":"loading mysqlconfig success..."}
+{"level":"INFO","time":"2023-03-06T12:02:58.144+0800","caller":"Infrastructures/Init.go:50","msg":"loading redisconfig success..."}
+{"level":"INFO","time":"2023-03-06T12:03:08.245+0800","caller":"Logger/Logger.go:76","msg":"/signone","status":200,"method":"POST","path":"/signone","query":"id=19","ip":"127.0.0.1","user-agent":"PostmanRuntime/7.30.1","errors":"","cost":0.013131573}
+{"level":"INFO","time":"2023-03-06T12:03:50.118+0800","caller":"Logger/Logger.go:76","msg":"/login","status":200,"method":"POST","path":"/login","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime/7.30.1","errors":"","cost":0.000011296}
+{"level":"ERROR","time":"2023-03-06T12:04:07.726+0800","caller":"User/User.go:177","msg":"SignUp with invalid param","error":"strconv.ParseInt: parsing \"\": invalid syntax"}
+{"level":"INFO","time":"2023-03-06T12:04:07.727+0800","caller":"Logger/Logger.go:76","msg":"/signone","status":200,"method":"POST","path":"/signone","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime/7.30.1","errors":"","cost":0.001117724}
+{"level":"INFO","time":"2023-03-06T12:14:24.978+0800","caller":"Infrastructures/Init.go:93","msg":"Shutdown Server ..."}
+{"level":"INFO","time":"2023-03-06T12:14:24.981+0800","caller":"Infrastructures/Init.go:101","msg":"Server exiting ..."}
+{"level":"INFO","time":"2023-03-06T12:14:49.707+0800","caller":"Infrastructures/Init.go:36","msg":"loading logger success..."}
+{"level":"INFO","time":"2023-03-06T12:14:49.712+0800","caller":"Infrastructures/Init.go:43","msg":"loading mysqlconfig success..."}
+{"level":"INFO","time":"2023-03-06T12:14:49.714+0800","caller":"Infrastructures/Init.go:50","msg":"loading redisconfig success..."}
+{"level":"INFO","time":"2023-03-06T12:14:57.407+0800","caller":"Logger/Logger.go:76","msg":"/signone","status":200,"method":"POST","path":"/signone","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime/7.30.1","errors":"","cost":0.003560907}
+{"level":"INFO","time":"2023-03-06T12:15:04.730+0800","caller":"Logger/Logger.go:76","msg":"/login","status":200,"method":"POST","path":"/login","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime/7.30.1","errors":"","cost":0.000027298}
+{"level":"INFO","time":"2023-03-06T12:15:53.082+0800","caller":"Logger/Logger.go:76","msg":"/login","status":200,"method":"POST","path":"/login","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime/7.30.1","errors":"","cost":0.000037731}
+{"level":"INFO","time":"2023-03-06T12:16:00.146+0800","caller":"Logger/Logger.go:76","msg":"/login","status":200,"method":"POST","path":"/login","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime/7.30.1","errors":"","cost":0.000020988}
+{"level":"INFO","time":"2023-03-06T12:17:54.131+0800","caller":"Logger/Logger.go:76","msg":"/login","status":200,"method":"POST","path":"/login","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime/7.30.1","errors":"","cost":0.000025117}
+{"level":"INFO","time":"2023-03-06T12:18:12.909+0800","caller":"Logger/Logger.go:76","msg":"/login","status":200,"method":"POST","path":"/login","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime/7.30.1","errors":"","cost":0.008612493}
+{"level":"INFO","time":"2023-03-06T12:18:36.700+0800","caller":"Logger/Logger.go:76","msg":"/signdel","status":200,"method":"POST","path":"/signdel","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime/7.30.1","errors":"","cost":0.0000588}
+{"level":"INFO","time":"2023-03-06T12:21:01.738+0800","caller":"Logger/Logger.go:76","msg":"/signdel","status":200,"method":"POST","path":"/signdel","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime/7.30.1","errors":"","cost":0.00004809}
+{"level":"INFO","time":"2023-03-06T13:34:04.162+0800","caller":"Logger/Logger.go:76","msg":"/signdel","status":200,"method":"POST","path":"/signdel","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime/7.30.1","errors":"","cost":0.000145976}
+{"level":"INFO","time":"2023-03-06T13:34:30.481+0800","caller":"Infrastructures/Init.go:93","msg":"Shutdown Server ..."}
+{"level":"INFO","time":"2023-03-06T13:34:30.482+0800","caller":"Infrastructures/Init.go:101","msg":"Server exiting ..."}
+{"level":"INFO","time":"2023-03-06T13:34:37.309+0800","caller":"Infrastructures/Init.go:36","msg":"loading logger success..."}
+{"level":"INFO","time":"2023-03-06T13:34:37.317+0800","caller":"Infrastructures/Init.go:43","msg":"loading mysqlconfig success..."}
+{"level":"INFO","time":"2023-03-06T13:34:37.318+0800","caller":"Infrastructures/Init.go:50","msg":"loading redisconfig success..."}
+{"level":"INFO","time":"2023-03-06T13:34:40.552+0800","caller":"Logger/Logger.go:76","msg":"/signdel","status":200,"method":"POST","path":"/signdel","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime/7.30.1","errors":"","cost":0.000212986}
+{"level":"INFO","time":"2023-03-06T13:35:36.575+0800","caller":"Infrastructures/Init.go:93","msg":"Shutdown Server ..."}
+{"level":"INFO","time":"2023-03-06T13:35:36.577+0800","caller":"Infrastructures/Init.go:101","msg":"Server exiting ..."}
+{"level":"INFO","time":"2023-03-06T13:35:41.770+0800","caller":"Infrastructures/Init.go:36","msg":"loading logger success..."}
+{"level":"INFO","time":"2023-03-06T13:35:41.779+0800","caller":"Infrastructures/Init.go:43","msg":"loading mysqlconfig success..."}
+{"level":"INFO","time":"2023-03-06T13:35:41.783+0800","caller":"Infrastructures/Init.go:50","msg":"loading redisconfig success..."}
+{"level":"INFO","time":"2023-03-06T13:35:44.388+0800","caller":"Logger/Logger.go:76","msg":"/signdel","status":200,"method":"POST","path":"/signdel","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime/7.30.1","errors":"","cost":0.000277443}
+{"level":"INFO","time":"2023-03-06T13:37:35.255+0800","caller":"Infrastructures/Init.go:93","msg":"Shutdown Server ..."}
+{"level":"INFO","time":"2023-03-06T13:37:35.257+0800","caller":"Infrastructures/Init.go:101","msg":"Server exiting ..."}
+{"level":"INFO","time":"2023-03-06T13:37:39.800+0800","caller":"Infrastructures/Init.go:36","msg":"loading logger success..."}
+{"level":"INFO","time":"2023-03-06T13:37:39.804+0800","caller":"Infrastructures/Init.go:43","msg":"loading mysqlconfig success..."}
+{"level":"INFO","time":"2023-03-06T13:37:39.806+0800","caller":"Infrastructures/Init.go:50","msg":"loading redisconfig success..."}
+{"level":"INFO","time":"2023-03-06T13:37:42.926+0800","caller":"Logger/Logger.go:76","msg":"/signdel","status":200,"method":"POST","path":"/signdel","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime/7.30.1","errors":"","cost":0.000187312}
+{"level":"INFO","time":"2023-03-06T13:39:01.340+0800","caller":"Infrastructures/Init.go:93","msg":"Shutdown Server ..."}
+{"level":"INFO","time":"2023-03-06T13:39:01.341+0800","caller":"Infrastructures/Init.go:101","msg":"Server exiting ..."}
+{"level":"INFO","time":"2023-03-06T13:39:04.116+0800","caller":"Infrastructures/Init.go:36","msg":"loading logger success..."}
+{"level":"INFO","time":"2023-03-06T13:39:04.121+0800","caller":"Infrastructures/Init.go:43","msg":"loading mysqlconfig success..."}
+{"level":"INFO","time":"2023-03-06T13:39:04.122+0800","caller":"Infrastructures/Init.go:50","msg":"loading redisconfig success..."}
+{"level":"INFO","time":"2023-03-06T13:39:05.729+0800","caller":"Infrastructures/Init.go:93","msg":"Shutdown Server ..."}
+{"level":"INFO","time":"2023-03-06T13:39:05.730+0800","caller":"Infrastructures/Init.go:101","msg":"Server exiting ..."}
+{"level":"INFO","time":"2023-03-06T13:39:11.246+0800","caller":"Infrastructures/Init.go:36","msg":"loading logger success..."}
+{"level":"INFO","time":"2023-03-06T13:39:11.251+0800","caller":"Infrastructures/Init.go:43","msg":"loading mysqlconfig success..."}
+{"level":"INFO","time":"2023-03-06T13:39:11.252+0800","caller":"Infrastructures/Init.go:50","msg":"loading redisconfig success..."}
+{"level":"INFO","time":"2023-03-06T13:39:14.383+0800","caller":"Logger/Logger.go:76","msg":"/signdel","status":200,"method":"POST","path":"/signdel","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime/7.30.1","errors":"","cost":0.000217561}
+{"level":"INFO","time":"2023-03-06T13:42:00.972+0800","caller":"Logger/Logger.go:76","msg":"/signone","status":200,"method":"POST","path":"/signone","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime/7.30.1","errors":"","cost":0.000056474}
+{"level":"INFO","time":"2023-03-06T13:42:02.227+0800","caller":"Logger/Logger.go:76","msg":"/signone","status":200,"method":"POST","path":"/signone","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime/7.30.1","errors":"","cost":0.00005415}
+{"level":"INFO","time":"2023-03-06T13:42:05.290+0800","caller":"Logger/Logger.go:76","msg":"/login","status":200,"method":"POST","path":"/login","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime/7.30.1","errors":"","cost":0.006197088}
+{"level":"INFO","time":"2023-03-06T13:42:15.105+0800","caller":"Logger/Logger.go:76","msg":"/signone","status":200,"method":"POST","path":"/signone","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime/7.30.1","errors":"","cost":0.002265085}
+{"level":"ERROR","time":"2023-03-06T13:42:59.811+0800","caller":"User/User.go:174","msg":"Getone with invalid param","error":"invalid character 'd' looking for beginning of value"}
+{"level":"INFO","time":"2023-03-06T13:42:59.811+0800","caller":"Logger/Logger.go:76","msg":"/signone","status":200,"method":"POST","path":"/signone","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime/7.30.1","errors":"","cost":0.000132544}
+{"level":"INFO","time":"2023-03-06T13:43:46.242+0800","caller":"Logger/Logger.go:76","msg":"/signone","status":200,"method":"POST","path":"/signone","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime/7.30.1","errors":"","cost":0.002333771}
+{"level":"INFO","time":"2023-03-06T13:43:56.562+0800","caller":"Logger/Logger.go:76","msg":"/signdel","status":200,"method":"POST","path":"/signdel","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime/7.30.1","errors":"","cost":0.000045033}
+{"level":"INFO","time":"2023-03-06T13:44:13.500+0800","caller":"Logger/Logger.go:76","msg":"/signdel","status":200,"method":"POST","path":"/signdel","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime/7.30.1","errors":"","cost":0.000053239}
+{"level":"INFO","time":"2023-03-06T13:47:55.259+0800","caller":"Logger/Logger.go:76","msg":"/signdel","status":200,"method":"POST","path":"/signdel","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime/7.30.1","errors":"","cost":0.000047568}
+{"level":"INFO","time":"2023-03-06T13:48:06.176+0800","caller":"Infrastructures/Init.go:93","msg":"Shutdown Server ..."}
+{"level":"INFO","time":"2023-03-06T13:48:06.177+0800","caller":"Infrastructures/Init.go:101","msg":"Server exiting ..."}
+{"level":"INFO","time":"2023-03-06T13:48:28.122+0800","caller":"Infrastructures/Init.go:36","msg":"loading logger success..."}
+{"level":"INFO","time":"2023-03-06T13:48:28.126+0800","caller":"Infrastructures/Init.go:43","msg":"loading mysqlconfig success..."}
+{"level":"INFO","time":"2023-03-06T13:48:28.127+0800","caller":"Infrastructures/Init.go:50","msg":"loading redisconfig success..."}
+{"level":"INFO","time":"2023-03-06T13:48:30.883+0800","caller":"Logger/Logger.go:76","msg":"/signdel","status":200,"method":"POST","path":"/signdel","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime/7.30.1","errors":"","cost":0.000217603}
+{"level":"INFO","time":"2023-03-06T13:48:31.824+0800","caller":"Logger/Logger.go:76","msg":"/signdel","status":200,"method":"POST","path":"/signdel","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime/7.30.1","errors":"","cost":0.000065024}
+{"level":"INFO","time":"2023-03-06T13:48:32.836+0800","caller":"Logger/Logger.go:76","msg":"/signdel","status":200,"method":"POST","path":"/signdel","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime/7.30.1","errors":"","cost":0.000041225}
+{"level":"INFO","time":"2023-03-06T13:48:36.132+0800","caller":"Logger/Logger.go:76","msg":"/signdel","status":200,"method":"POST","path":"/signdel","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime/7.30.1","errors":"","cost":0.000048092}
+{"level":"INFO","time":"2023-03-06T13:48:50.447+0800","caller":"Infrastructures/Init.go:93","msg":"Shutdown Server ..."}
+{"level":"INFO","time":"2023-03-06T13:48:50.448+0800","caller":"Infrastructures/Init.go:101","msg":"Server exiting ..."}
+{"level":"INFO","time":"2023-03-06T13:49:24.983+0800","caller":"Infrastructures/Init.go:36","msg":"loading logger success..."}
+{"level":"INFO","time":"2023-03-06T13:49:24.988+0800","caller":"Infrastructures/Init.go:43","msg":"loading mysqlconfig success..."}
+{"level":"INFO","time":"2023-03-06T13:49:24.990+0800","caller":"Infrastructures/Init.go:50","msg":"loading redisconfig success..."}
+{"level":"INFO","time":"2023-03-06T13:49:27.539+0800","caller":"Logger/Logger.go:76","msg":"/signdel","status":200,"method":"POST","path":"/signdel","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime/7.30.1","errors":"","cost":0.006211182}
+{"level":"INFO","time":"2023-03-06T13:49:29.588+0800","caller":"Logger/Logger.go:76","msg":"/signdel","status":200,"method":"POST","path":"/signdel","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime/7.30.1","errors":"","cost":0.017797989}
+{"level":"INFO","time":"2023-03-06T13:54:58.031+0800","caller":"Infrastructures/Init.go:93","msg":"Shutdown Server ..."}
+{"level":"INFO","time":"2023-03-06T13:54:58.032+0800","caller":"Infrastructures/Init.go:101","msg":"Server exiting ..."}
+{"level":"INFO","time":"2023-03-06T13:55:03.592+0800","caller":"Infrastructures/Init.go:36","msg":"loading logger success..."}
+{"level":"INFO","time":"2023-03-06T13:55:03.597+0800","caller":"Infrastructures/Init.go:43","msg":"loading mysqlconfig success..."}
+{"level":"INFO","time":"2023-03-06T13:55:03.600+0800","caller":"Infrastructures/Init.go:50","msg":"loading redisconfig success..."}
+{"level":"INFO","time":"2023-03-06T13:55:09.569+0800","caller":"Logger/Logger.go:76","msg":"/signdel","status":200,"method":"POST","path":"/signdel","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime/7.30.1","errors":"","cost":0.004700894}
+{"level":"INFO","time":"2023-03-06T13:55:24.558+0800","caller":"Infrastructures/Init.go:93","msg":"Shutdown Server ..."}
+{"level":"INFO","time":"2023-03-06T13:55:24.559+0800","caller":"Infrastructures/Init.go:101","msg":"Server exiting ..."}
+{"level":"INFO","time":"2023-03-06T13:58:19.876+0800","caller":"Infrastructures/Init.go:36","msg":"loading logger success..."}
+{"level":"INFO","time":"2023-03-06T13:58:19.881+0800","caller":"Infrastructures/Init.go:43","msg":"loading mysqlconfig success..."}
+{"level":"INFO","time":"2023-03-06T13:58:19.882+0800","caller":"Infrastructures/Init.go:50","msg":"loading redisconfig success..."}
+{"level":"INFO","time":"2023-03-06T13:58:27.866+0800","caller":"Logger/Logger.go:76","msg":"/signdel","status":200,"method":"POST","path":"/signdel","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime/7.30.1","errors":"","cost":0.010015073}
+{"level":"INFO","time":"2023-03-06T13:58:39.109+0800","caller":"Infrastructures/Init.go:93","msg":"Shutdown Server ..."}
+{"level":"INFO","time":"2023-03-06T13:58:39.110+0800","caller":"Infrastructures/Init.go:101","msg":"Server exiting ..."}

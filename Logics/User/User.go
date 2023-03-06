@@ -1,6 +1,7 @@
 package User
 
 import (
+	"fmt"
 	"mygofarm/Infrastructures/Rom"
 	"mygofarm/Models/User"
 )
@@ -71,7 +72,9 @@ type UserSignDelUser struct {
 }
 
 func (userModel *UserSignDelUser) UserSignDelUser() (int64, error) {
-	result := Rom.Db.Where("id", userModel.Id).Delete(userModel)
+	var user User.User
+	result := Rom.Db.Where("id", userModel.Id).Delete(user)
+	fmt.Printf("result:%v\n", result)
 	if result.RowsAffected != 1 {
 		return 0, result.Error
 	}
