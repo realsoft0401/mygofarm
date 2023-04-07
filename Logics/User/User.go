@@ -34,7 +34,7 @@ func (userModel *LoginModelHandler) UserLoginUser() (User.User, error) {
 }
 
 /*
-修改用户信息
+添加用户信息
 */
 type SignModelHandler struct {
 	User.SignModelHandler
@@ -51,14 +51,15 @@ func (userModel *SignModelHandler) UserSignUser() (int64, error) {
 }
 
 /*
-添加一个用户信息
+修改一个用户信息
 */
 type SignUpUserHandler struct {
 	User.SignModelHandler
 }
 
 func (userModel *SignUpUserHandler) UserSignUpUser() (int64, error) {
-	result := Rom.Db.Model(userModel).Updates(map[string]interface{}{"username": userModel.Username, "email": userModel.Email, "gender": userModel.Gender})
+	var user User.User
+	result := Rom.Db.Model(user).Updates(map[string]interface{}{"username": userModel.Username, "email": userModel.Email, "gender": userModel.Gender})
 	if result.RowsAffected != 1 {
 		return 0, result.Error
 	}
