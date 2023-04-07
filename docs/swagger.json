@@ -4,7 +4,7 @@
         "contact": {}
     },
     "paths": {
-        "/login": {
+        "/api/login": {
             "post": {
                 "description": "用户根据用户名、密码登录",
                 "consumes": [
@@ -38,7 +38,7 @@
                 }
             }
         },
-        "/signadd": {
+        "/api/signadd": {
             "post": {
                 "description": "用户ID、名称、密码、性别、Emaill",
                 "consumes": [
@@ -72,7 +72,7 @@
                 }
             }
         },
-        "/signdel": {
+        "/api/signdel": {
             "post": {
                 "security": [
                     {
@@ -117,7 +117,7 @@
                 }
             }
         },
-        "/signone": {
+        "/api/signone": {
             "post": {
                 "security": [
                     {

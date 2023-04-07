@@ -22,7 +22,7 @@ import (
 // @Param req body User.LoginModelHandler true "req"
 // @	type: User.LoginModelHandler
 // @Success 200 {object} Response._ResponsePostList
-// @Router /login [post]
+// @Router /api/login [post]
 func LoginHandler(c *gin.Context) {
 	//1.获取参数和参数校验
 	p := new(User.LoginModelHandler)
@@ -69,7 +69,7 @@ func LoginHandler(c *gin.Context) {
 // @Param req body User.SignModelHandler true "req"
 // @  type: User.SignModelHandler
 // @Success 200 {object} Response._ResponsePostList
-// @Router /signadd [post]
+// @Router /api/signadd [post]
 func SignHandler(c *gin.Context) {
 	p := new(User.User)
 	if err := c.ShouldBindJSON(&p); err != nil {
@@ -126,7 +126,7 @@ func SignHandler(c *gin.Context) {
 // @  type: User.SignDelModelHandler
 // @Security ApiKeyAuth
 // @Success 200 {object} Response._ResponsePostList
-// @Router /signdel [post]
+// @Router /api/signdel [post]
 func SignDelHandler(c *gin.Context) {
 	//1.获取参数和参数校验
 	p := new(User.SignDelModelHandler)
@@ -161,7 +161,7 @@ func SignDelHandler(c *gin.Context) {
 // @  type: User.GetoneUserModelHandler
 // @Security ApiKeyAuth
 // @Success 200 {object} Response._ResponsePostList
-// @Router /signone [post]
+// @Router /api/signone [post]
 func GetoneUserHandler(c *gin.Context) {
 	//1.获取参数和参数校验
 	p := new(User.SignDelModelHandler)

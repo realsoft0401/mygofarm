@@ -41,7 +41,9 @@ type SignModelHandler struct {
 }
 
 func (userModel *SignModelHandler) UserSignUser() (int64, error) {
-	result := Rom.Db.Select("userid", "username", "password", "email", "gender").Create(userModel)
+	var user User.User
+	//result := Rom.Db.Select("userid", "username", "password", "email", "gender").Create(userModel)
+	result := Rom.Db.Model(user).Create(map[string]interface{}{"userid": userModel.UserId,"username": userModel.Username,"password":userModel.Password ,"email": userModel.Email, "gender": userModel.Gender})
 	if result.RowsAffected != 1 {
 		return 0, result.Error
 	}

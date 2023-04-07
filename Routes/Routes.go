@@ -23,10 +23,10 @@ func Setup() *gin.Engine {
 	r.GET("/", func(c *gin.Context) {
 		c.String(http.StatusOK, fmt.Sprintf("欢迎使用 GoFarm 脚手架 \n 系统版本信息:%s\n", Settings.Conf.Version))
 	})
-	r.POST("/signadd", User.SignHandler)
-	r.POST("/login", User.LoginHandler)
-	r.POST("/signdel", Middlewares.JWTAuthMiddleware(), User.SignDelHandler)
-	r.POST("/signone", Middlewares.JWTAuthMiddleware(), User.GetoneUserHandler)
+	r.POST("/api/signadd", User.SignHandler)
+	r.POST("/api/login", User.LoginHandler)
+	r.POST("/api/signdel", Middlewares.JWTAuthMiddleware(), User.SignDelHandler)
+	r.POST("/api/signone", Middlewares.JWTAuthMiddleware(), User.GetoneUserHandler)
 
 	return r
 }

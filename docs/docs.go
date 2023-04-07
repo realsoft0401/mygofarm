@@ -15,7 +15,7 @@ const docTemplate = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
-        "/login": {
+        "/api/login": {
             "post": {
                 "description": "用户根据用户名、密码登录",
                 "consumes": [
@@ -49,7 +49,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/signadd": {
+        "/api/signadd": {
             "post": {
                 "description": "用户ID、名称、密码、性别、Emaill",
                 "consumes": [
@@ -83,7 +83,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/signdel": {
+        "/api/signdel": {
             "post": {
                 "security": [
                     {
@@ -128,7 +128,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/signone": {
+        "/api/signone": {
             "post": {
                 "security": [
                     {
