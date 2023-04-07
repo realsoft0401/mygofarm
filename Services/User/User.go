@@ -102,7 +102,7 @@ func SignHandler(c *gin.Context) {
 		Gender:     p.Gender,
 		RePassword: password,
 	}}
-	var result, err = LogicUser.UserSignUser()
+	var _ , err = LogicUser.UserSignUser()
 	if err != nil {
 		if errors.Is(err, ErrorUserExit) {
 			HttpResponse.ResponseError(c, HttpResponse.CodeUserExist)
@@ -112,7 +112,8 @@ func SignHandler(c *gin.Context) {
 		return
 	}
 	//3.返回响应
-	HttpResponse.ResponseSuccess(c, result)
+	var tokenString, _ = Jwt.GenToken(UserId, p.UserName)
+	HttpResponse.ResponseSuccess(c, gin.H{"token": tokenString})
 }
 
 // 用户删除接口
