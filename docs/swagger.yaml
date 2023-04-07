@@ -101,6 +101,20 @@ paths:
       summary: 用户登录接口
       tags:
       - 用户登录相关接口
+  /api/nearmall:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/Response._ResponsePostList'
+      summary: 附近店铺数据接口
+      tags:
+      - 附近店铺数据相关接口
   /api/signadd:
     post:
       consumes:

@@ -5,6 +5,7 @@ import (
 	"mygofarm/Middlewares"
 	"mygofarm/Pkg/Logger"
 	"mygofarm/Services/User"
+	"mygofarm/Services/Mall"
 	"mygofarm/Settings"
 
 	"net/http"
@@ -27,6 +28,6 @@ func Setup() *gin.Engine {
 	r.POST("/api/login", User.LoginHandler)
 	r.POST("/api/signdel", Middlewares.JWTAuthMiddleware(), User.SignDelHandler)
 	r.POST("/api/signone", Middlewares.JWTAuthMiddleware(), User.GetoneUserHandler)
-
+	r.GET("/api/nearmall", Middlewares.JWTAuthMiddleware(), Mall.GetNearMallHandler)
 	return r
 }

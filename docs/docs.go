@@ -49,6 +49,28 @@ const docTemplate = `{
                 }
             }
         },
+        "/api/nearmall": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "附近店铺数据相关接口"
+                ],
+                "summary": "附近店铺数据接口",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response._ResponsePostList"
+                        }
+                    }
+                }
+            }
+        },
         "/api/signadd": {
             "post": {
                 "description": "用户ID、名称、密码、性别、Emaill",
