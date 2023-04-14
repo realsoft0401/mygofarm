@@ -15,6 +15,96 @@ const docTemplate = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
+        "/api/getmallone": {
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "商户主键ID",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "获取单个用户信息接口"
+                ],
+                "summary": "获取单个商户信息接口",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Bearer 用户令牌",
+                        "name": "Authorization",
+                        "in": "header"
+                    },
+                    {
+                        "description": "req",
+                        "name": "req",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Mall.GetOneMallModelHandler"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response._ResponsePostList"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/getmallprod": {
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "商户主键ID 商品类型主键",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "获取商户商品信息接口"
+                ],
+                "summary": "获取单个商户信息接口",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Bearer 用户令牌",
+                        "name": "Authorization",
+                        "in": "header"
+                    },
+                    {
+                        "description": "req",
+                        "name": "req",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/mygofarm_Logics_Product.GetMallProductModelHandler"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response._ResponsePostList"
+                        }
+                    }
+                }
+            }
+        },
         "/api/login": {
             "post": {
                 "description": "用户根据用户名、密码登录",
@@ -197,6 +287,15 @@ const docTemplate = `{
         }
     },
     "definitions": {
+        "Mall.GetOneMallModelHandler": {
+            "type": "object",
+            "properties": {
+                "mid": {
+                    "description": "Id 商户主键ID",
+                    "type": "string"
+                }
+            }
+        },
         "Response.ResCode": {
             "type": "integer",
             "enum": [
@@ -249,6 +348,18 @@ const docTemplate = `{
                 "id": {
                     "description": "Id 用户主键ID",
                     "type": "integer"
+                }
+            }
+        },
+        "mygofarm_Logics_Product.GetMallProductModelHandler": {
+            "type": "object",
+            "properties": {
+                "mid": {
+                    "description": "Id 商户主键ID",
+                    "type": "string"
+                },
+                "productclass": {
+                    "type": "string"
                 }
             }
         },

@@ -27,7 +27,7 @@ swag init
 ## 执行项目
 
 ```
-./main.go
+./main
 ```
 
 

@@ -1,4 +1,10 @@
 definitions:
+  Mall.GetOneMallModelHandler:
+    properties:
+      mid:
+        description: Id 商户主键ID
+        type: string
+    type: object
   Response._ResponsePostList:
     properties:
       code:
@@ -40,6 +46,14 @@ definitions:
         description: Id 用户主键ID
         type: integer
     type: object
+  mygofarm_Logics_Product.GetMallProductModelHandler:
+    properties:
+      mid:
+        description: Id 商户主键ID
+        type: string
+      productclass:
+        type: string
+    type: object
   mygofarm_Models_User.GetoneUserModelHandler:
     properties:
       id:
@@ -79,6 +93,62 @@ definitions:
 info:
   contact: {}
 paths:
+  /api/getmallone:
+    post:
+      consumes:
+      - application/json
+      description: 商户主键ID
+      parameters:
+      - description: Bearer 用户令牌
+        in: header
+        name: Authorization
+        type: string
+      - description: req
+        in: body
+        name: req
+        required: true
+        schema:
+          $ref: '#/definitions/Mall.GetOneMallModelHandler'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/Response._ResponsePostList'
+      security:
+      - ApiKeyAuth: []
+      summary: 获取单个商户信息接口
+      tags:
+      - 获取单个用户信息接口
+  /api/getmallprod:
+    post:
+      consumes:
+      - application/json
+      description: 商户主键ID 商品类型主键
+      parameters:
+      - description: Bearer 用户令牌
+        in: header
+        name: Authorization
+        type: string
+      - description: req
+        in: body
+        name: req
+        required: true
+        schema:
+          $ref: '#/definitions/mygofarm_Logics_Product.GetMallProductModelHandler'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/Response._ResponsePostList'
+      security:
+      - ApiKeyAuth: []
+      summary: 获取单个商户信息接口
+      tags:
+      - 获取商户商品信息接口
   /api/login:
     post:
       consumes:

@@ -13,3 +13,16 @@ func GetNearMall() ( []Mall.NearMall , error) {
 	Rom.Db.Find(&nearmall)
 	return nearmall, nil
 }
+
+/*
+获取一家门店信息
+*/
+type GetoneMallModelHandler struct {
+	Mall.GetOneMallModelHandler
+}
+
+func (mallModel *GetoneMallModelHandler) GetOneNearMall() (Mall.NearMall, error) {
+	var mallResult Mall.NearMall
+	Rom.Db.Find(&mallResult, mallModel.MId)
+	return mallResult, nil
+}

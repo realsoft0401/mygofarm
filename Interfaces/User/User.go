@@ -17,5 +17,5 @@ type EntityUserService interface {
 	UserSignDelUser(user *UserModels.SignDelModelHandler) (result int64, err error)
 	//获取所有用户信息
 	//返回所有用户信息，报错信息
-	UserGetOneUser(user *UserModels.GetoneUserModelHandler) (userResult *UserModels.User, err error)
+	UserGetOneUser(user *UserModels.GetoneUserModelHandler) (userResult[] *UserModels.User, err error)
 }
